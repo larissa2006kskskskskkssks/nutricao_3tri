@@ -28,3 +28,13 @@ console.log(imc);
 
 let tdImc = paciente.querySelector(".info-imc")
 tdImc.textContent = imc;
+
+//validação de dados 
+if(peso <= 0 || peso >= 1000){
+ tdImc.textContent = "peso inválido!"; }
+
+ if(altura <= 0 || altura >= 3){
+    tdImc.textContent = "altura inválida!";
+
+
+}

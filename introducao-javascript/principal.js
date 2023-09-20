@@ -13,18 +13,44 @@ console.log(titulo.textContent);
 titulo.textContent = "fica grande nutrição";
 
 //mudanças na tabela
-let paciente = document.querySelector("#primeiro-paciente");
-console.log(paciente);
 
-let tdPeso = paciente.querySelector(".info-peso");
+//armazena no array paciente de dados do primeiro paciente 
+let pacientes = document.querySelectorAll(".paciente");
+
+//criação do looping for 
+for(i = 0; i < pacientes.length; i++){
+  
+let paciente= pacientes [i];
+let tdPeso= paciente.querySelector(".info-peso")
 let tdAltura = paciente.querySelector(".info-altura");
 
 
 let peso =tdPeso.textContent;
 let altura =tdAltura.textContent;
 
-let imc = peso / (altura*altura); 
-console.log(imc);
+
 
 let tdImc = paciente.querySelector(".info-imc")
-tdImc.textContent = imc;
+
+//validação de dados 
+let pesoEhValido = true;
+let alturaEhValida = true;
+//verifica se o peso é valido
+if (peso <= 0|| peso >= 1000){
+    tdImc.textContent= "Peso inválido";
+    pesoEhValido = false;
+}
+//verifique se a altura é valida
+if (altura <= 0 || altura >= 3){
+    tdImc.textContent = "Altura inválida";
+    alturaEhValida = false;
+}
+//verifica se o peso e a altura são validos 
+if(pesoEhValido && alturaEhValida){
+    let imc = peso/ (altura*altura);
+    tdImc.textContent = imc;
+} else {
+    tdImc.textContent = "Altura e/ou peso inválidos!";
+}
+}
+
